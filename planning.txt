@@ -1,0 +1,46 @@
+Voting Application 
+
+A functionality where user can give vote to the given set of candidates 
+
+Model?
+Rotues?
+
+
+functionalities
+1. user sigin/signup
+2. see the list of candidate
+3. one vote is eligble per voter
+4. there is a route which shows the list of candidates and their real time vote counts sorted by their vote count.
+5. user must have a unique government id: aadhar card
+6. list of candidates
+7. there should be one admin who can only maintain the table of candidate and he can't able to vote at all 
+8. user can change there password.
+9. admin cannot vote
+
+
+
+----------------------------------------------------------------------------
+
+Rotues
+
+
+user authentication:
+        /signup POST: Create a new user account
+        /login POST: Login to an existing account
+
+Voting: 
+        /candidate: GET: Get the list of candidates.
+        /vote/candidateId: POST: vote for a specific candidate
+
+Vote Counts:
+            /vote/counts: GET - Get the list of candidates sorted by their vote count
+        
+User Profiles:
+            /Profile: GET - Get the user's profile information
+            /profile/password: PUT - Change the user's password
+        
+Admin candidate Management:
+    /candidate: POST - Create a new candidate
+    /candidates/:candidateId: PUT - update an existing candidate
+    /candidate/:candidateId: DELETE - Delete a candidate from the list.
+
