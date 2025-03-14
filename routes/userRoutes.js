@@ -1,3 +1,4 @@
+const { jwtAuthMiddleware } = require('../jwt')
 const User = require('./../models/user')
 const express = require('express')
 const router = express.Router()
@@ -50,3 +51,29 @@ router.post('/login',async(req,res)=> {
             res.status(500).json({error: 'Internal Server Error'})
         }
 })
+
+router.get('/profile/password', jwtAuthMiddleware, async(req,res)=> {
+    try{
+      const userId = req.user.userId
+      const {currentPassword, newPassword} = req.body;
+
+      const user = await User.findById(userId)
+
+      if(!(await user.comparePassword(currentPassword))){
+        return res.status(401).json({error: "Invalid Username or password"})
+      }
+
+      user.password = newPassword
+      await user.save()
+
+      console.log('Password updated!')
+      res.status(200).json({ message: 'Password updated' });
+    }catch(error){
+        console.log("Error:",error)
+        res.status(500).json({error: "Internal Server Error"})
+            
+    }
+})
+
+module.exports = router;
+ 
