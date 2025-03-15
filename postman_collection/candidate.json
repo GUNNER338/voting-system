@@ -1,0 +1,73 @@
+{
+    "info": {
+      "name": "Candidate API Collection",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Add Candidate (Admin Only)",
+        "request": {
+          "method": "POST",
+          "header": [
+            { "key": "Authorization", "value": "Bearer {{token}}" },
+            { "key": "Content-Type", "value": "application/json" }
+          ],
+          "url": { "raw": "http://localhost:3000/candidate", "host": ["http://localhost:3000"], "path": ["candidate"] },
+          "body": {
+            "mode": "raw",
+            "raw": "{\"name\": \"John Doe\", \"party\": \"Independent\", \"age\": 45 }"
+          }
+        }
+      },
+      {
+        "name": "Update Candidate (Admin Only)",
+        "request": {
+          "method": "PUT",
+          "header": [
+            { "key": "Authorization", "value": "Bearer {{token}}" },
+            { "key": "Content-Type", "value": "application/json" }
+          ],
+          "url": { "raw": "http://localhost:3000/candidate/:candidateID", "host": ["http://localhost:3000"], "path": ["candidate", ":candidateID"] },
+          "body": {
+            "mode": "raw",
+            "raw": "{\"name\": \"Updated Name\", \"party\": \"Updated Party\" }"
+          }
+        }
+      },
+      {
+        "name": "Delete Candidate (Admin Only)",
+        "request": {
+          "method": "DELETE",
+          "header": [
+            { "key": "Authorization", "value": "Bearer {{token}}" }
+          ],
+          "url": { "raw": "http://localhost:3000/candidate/:candidateID", "host": ["http://localhost:3000"], "path": ["candidate", ":candidateID"] }
+        }
+      },
+      {
+        "name": "Vote for a Candidate (User Only)",
+        "request": {
+          "method": "GET",
+          "header": [
+            { "key": "Authorization", "value": "Bearer {{token}}" }
+          ],
+          "url": { "raw": "http://localhost:3000/candidate/vote/:candidateID", "host": ["http://localhost:3000"], "path": ["candidate", "vote", ":candidateID"] }
+        }
+      },
+      {
+        "name": "Get Vote Count",
+        "request": {
+          "method": "GET",
+          "url": { "raw": "http://localhost:3000/candidate/vote/count", "host": ["http://localhost:3000"], "path": ["candidate", "vote", "count"] }
+        }
+      },
+      {
+        "name": "Get All Candidates",
+        "request": {
+          "method": "GET",
+          "url": { "raw": "http://localhost:3000/candidate", "host": ["http://localhost:3000"], "path": ["candidate"] }
+        }
+      }
+    ]
+  }
+  

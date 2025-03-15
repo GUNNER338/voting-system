@@ -1,18 +1,21 @@
 const express = require('express')
-const app= express()
-const connectDB= require('./db')
+const app = express();
+const db = require('./db');
 require('dotenv').config();
 
+const bodyParser = require('body-parser'); 
+app.use(bodyParser.json()); // req.body
+const PORT = process.env.PORT || 3000;
 
-const bodyParser = require('body-parser')
-app.use(bodyParser.json())
-const PORT = process.env.PORT || 3001;
-// console.log(PORT)
-// connectDB();
-const userRoutes = require('./routes/userRoutes')
+// Import the router files
+const userRoutes = require('./routes/userRoutes');
+const candidateRoutes = require('./routes/candidateRoutes');
 
-app.use('/user', userRoutes)
+// Use the routers
+app.use('/user', userRoutes);
+app.use('/candidate', candidateRoutes);
 
-app.listen(PORT, () =>{
-    console.log('listening on port 3000')
-}) 
+
+app.listen(PORT, ()=>{
+    console.log('listening on port 3000');
+})

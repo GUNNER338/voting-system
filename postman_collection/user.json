@@ -1,0 +1,69 @@
+{
+    "info": {
+        "_postman_id": "12345-67890-abcdef",
+        "name": "User Authentication API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Signup",
+            "request": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": {
+                    "raw": "http://localhost:3000/user/signup",
+                    "host": ["http://localhost:3000"],
+                    "path": ["user", "signup"]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"Test User\",\n    \"aadharCardNumber\": \"123456789012\",\n    \"password\": \"password123\",\n    \"role\": \"voter\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Login",
+            "request": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": {
+                    "raw": "http://localhost:3000/user/login",
+                    "host": ["http://localhost:3000"],
+                    "path": ["user", "login"]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"aadharCardNumber\": \"123456789012\",\n    \"password\": \"password123\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Get Profile",
+            "request": {
+                "method": "GET",
+                "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+                "url": {
+                    "raw": "http://localhost:3000/user/profile",
+                    "host": ["http://localhost:3000"],
+                    "path": ["user", "profile"]
+                }
+            }
+        },
+        {
+            "name": "Update Password",
+            "request": {
+                "method": "PUT",
+                "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
+                "url": {
+                    "raw": "http://localhost:3000/user/profile/password",
+                    "host": ["http://localhost:3000"],
+                    "path": ["user", "profile", "password"]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"currentPassword\": \"password123\",\n    \"newPassword\": \"newpassword123\"\n}"
+                }
+            }
+        }
+    ]
+}
