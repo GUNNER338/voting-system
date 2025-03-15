@@ -6,7 +6,7 @@ const mongoURL = process.env.MONGODB_URL_LOCAL // Replace 'mydatabase' with your
 // const mongoURL = process.env.MONGODB_URL;
 
 // Set up MongoDB connection
-mongoose.connect('mongodb://localhost:27017/votingSystem', { 
+mongoose.connect(mongoURL, { 
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

@@ -1,13 +1,14 @@
 const express = require('express')
 const app= express()
-const db= require('./db')
+const connectDB= require('./db')
 require('dotenv').config();
 
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 const PORT = process.env.PORT || 3001;
-
+// console.log(PORT)
+// connectDB();
 const userRoutes = require('./routes/userRoutes')
 
 app.use('/user', userRoutes)
